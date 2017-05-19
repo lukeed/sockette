@@ -1,5 +1,8 @@
 {
   "name": "sockette",
   "version": "0.0.0",
-  "description": "🔜"
+  "description": "🔜",
+  "dependencies": {
+    "mitt": "^1.1.2"
+  }
 }
