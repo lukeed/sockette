@@ -1,8 +1,24 @@
 {
   "name": "sockette",
   "version": "0.0.0",
-  "description": "🔜",
-  "dependencies": {
-    "mitt": "^1.1.2"
+  "description": "WIP",
+  "repository": "lukeed/sockette",
+  "umd:main": "dist/sockette.min.js",
+  "module": "dist/sockette.es.js",
+  "main": "dist/sockette.js",
+  "license": "MIT",
+  "author": {
+    "name": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "lukeed.com"
+  },
+  "scripts": {
+    "build": "microbundle src"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "microbundle": "^0.4.3"
   }
 }
