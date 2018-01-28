@@ -1,6 +1,6 @@
 function noop() {}
 
-module.exports = function (url, opts) {
+export default function (url, opts) {
 	opts = opts || {};
 
 	let k, fn, ws, $={};
