@@ -11,12 +11,12 @@ export default function (url, opts) {
 	}
 
 	$.onclose = e => {
-		(e.code !== 1e3) && reconnect(e);
+		(e.code !== 1e3) && $.reconnect(e);
 		(opts.onclose || noop)(e);
 	};
 
 	$.onerror = e => {
-		(e && e.code==='ECONNREFUSED') ? reconnect(e) : (opts.onerror || noop)(e);
+		(e && e.code==='ECONNREFUSED') ? $.reconnect(e) : (opts.onerror || noop)(e);
 	};
 
 	$.open = _ => {
