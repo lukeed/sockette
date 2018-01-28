@@ -1,8 +1,8 @@
 {
   "name": "sockette",
   "version": "0.0.0",
-  "description": "WIP",
   "repository": "lukeed/sockette",
+  "description": "🧦 The cutest little WebSocket wrapper!",
   "umd:main": "dist/sockette.min.js",
   "module": "dist/sockette.es.js",
   "main": "dist/sockette.js",
@@ -18,6 +18,11 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "socket",
+    "reconnect",
+    "websocket"
   ],
   "devDependencies": {
     "microbundle": "^0.4.3",
