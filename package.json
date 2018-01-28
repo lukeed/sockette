@@ -13,12 +13,14 @@
     "url": "lukeed.com"
   },
   "scripts": {
-    "build": "microbundle src"
+    "build": "microbundle src",
+    "test": "tape test/*.js"
   },
   "files": [
     "dist"
   ],
   "devDependencies": {
-    "microbundle": "^0.4.3"
+    "microbundle": "^0.4.3",
+    "tape": "^4.8.0"
   }
 }
