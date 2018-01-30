@@ -11,7 +11,7 @@ export default function (url, opts) {
 	}
 
 	$.onclose = e => {
-		(e.code !== 1e3) && $.reconnect(e);
+		(e.code !== 1e3 && e.code !== 1005) && $.reconnect(e);
 		(opts.onclose || noop)(e);
 	};
 
@@ -21,7 +21,6 @@ export default function (url, opts) {
 
 	$.open = _ => {
 		ws = new WebSocket(url, opts.protocols);
-		fn=ws.close; ws.close=(x,y) => ws && fn.call(ws, x||1e3, y);
 		for (k in $) ws[k] = $[k];
 		return ws;
 	};
