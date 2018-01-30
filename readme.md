@@ -20,7 +20,7 @@
 
 <br />
 
-Sockette is a tiny (339 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
+Sockette is a tiny (319 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
 
 Upon creation, the `WebSocket` is returned directly, exposing the native `close` and `send` methods.
 
