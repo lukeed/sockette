@@ -124,7 +124,7 @@ The `EventListener` to run in response to `'close'` events. It receives the `Eve
 
 > This is called when the connection has been closed for any reason.
 
-> **Important:** If the `error.code` indicates an _abnormal_ shutdown, an automatic reconnect attempt will be queued.
+> **Important:** If the `event.code` is _not_ `1000` or `1005` an automatic reconnect attempt will be queued.
 
 #### options.onerror
 Type: `Function`
@@ -133,7 +133,7 @@ The `EventListener` to run in response to `'error'` events. It receives the `Eve
 
 > This is called anytime an error occurs.
 
-> **Important:** If the `error.code` is `ECONNREFUSED`, an automatic reconnect attempt will be queued.
+> **Important:** If the `event.code` is `ECONNREFUSED`, an automatic reconnect attempt will be queued.
 
 ### send(data)
 
@@ -141,9 +141,7 @@ Identical to [`WebSocket#send()`](https://developer.mozilla.org/en-US/docs/Web/A
 
 ### close(code, reason)
 
-_Nearly_ identical to [`WebSocket#close()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#close()).
-
-> **Important:** If no `code` is specified, Sockette will send code `1000`, indicating [`Normal Closure`](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent#Status_codes).
+Identical to [`WebSocket#close()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#close()).
 
 ### reconnect()
 
