@@ -3,7 +3,7 @@ function noop() {}
 export default function (url, opts) {
 	opts = opts || {};
 
-	let k, fn, ws, $={};
+	let k, ws, $={};
 	let ms=opts.timeout || 1e3, num=0, max=opts.maxAttempts || Infinity;
 
 	for (k in opts) {
