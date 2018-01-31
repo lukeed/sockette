@@ -33,5 +33,9 @@ export default function (url, opts) {
 		}, ms);
 	};
 
+	$.sendJSON = function(s) {
+		return this.send(JSON.stringify(s));
+	}
+
 	return $.open();
 }
