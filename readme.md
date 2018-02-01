@@ -20,7 +20,7 @@
 
 <br />
 
-Sockette is a tiny (319 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
+Sockette is a tiny (344 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
 
 Upon creation, the `WebSocket` is returned directly, exposing the native `close` and `send` methods.
 
@@ -137,11 +137,15 @@ The `EventListener` to run in response to `'error'` events. It receives the `Eve
 
 ### send(data)
 
-Identical to [`WebSocket#send()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#send()), capable of sending multiple data types.
+Identical to [`WebSocket#send()`][send], capable of sending multiple data types.
 
 ### close(code, reason)
 
-Identical to [`WebSocket#close()`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#close()).
+Identical to [`WebSocket#close()`][close].
+
+### json(obj)
+
+Convenience method that passes your `obj` (Object) through `JSON.stringify` before passing it to [`WebSocket#send()`][send].
 
 ### reconnect()
 
@@ -157,3 +161,5 @@ Initializes a new `WebSocket` &mdash; used on itialization and by [`reconnect()`
 MIT © [Luke Edwards](https://lukeed.com)
 
 [MDN]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+[close]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#close()
+[send]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#send()
