@@ -19,7 +19,7 @@ export default function (url, opts) {
 		(e && e.code==='ECONNREFUSED') ? $.reconnect(e) : (opts.onerror || noop)(e);
 	};
 
-	$.open = _ => {
+	$.open = () => {
 		ws = new WebSocket(url, opts.protocols);
 		for (k in $) ws[k] = $[k];
 		return ws;
@@ -34,7 +34,7 @@ export default function (url, opts) {
 
 	$.json = x => {
 		ws.send(JSON.stringify(x));
-	}
+	};
 
 	return $.open();
 }
