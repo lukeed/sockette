@@ -33,8 +33,8 @@ export default function (url, opts) {
 		}, ms);
 	};
 
-	$.json = function(s) {
-		return this.send(JSON.stringify(s));
+	$.json = x => {
+		ws.send(JSON.stringify(x));
 	}
 
 	return $.open();
