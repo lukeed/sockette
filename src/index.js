@@ -33,7 +33,7 @@ export default function (url, opts) {
 		}, ms);
 	};
 
-	$.sendJSON = function(s) {
+	$.json = function(s) {
 		return this.send(JSON.stringify(s));
 	}
 
