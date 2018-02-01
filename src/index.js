@@ -32,5 +32,9 @@ export default function (url, opts) {
 		}, ms);
 	};
 
+	$.json = x => {
+		ws.send(JSON.stringify(x));
+	}
+
 	return $.open();
 }
