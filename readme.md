@@ -33,9 +33,10 @@ In addition to attaching [additional API methods](#api), Sockette allows you to 
 $ npm install --save sockette
 ```
 
+
 ## Usage
 
-Unlike `WebSocket`, you should declare all event listeners on initializie
+Unlike `WebSocket`, you should declare all event listeners on initialization:
 ```js
 const Sockette = require('sockette');
 
@@ -108,7 +109,7 @@ Type: `Function`
 
 The `EventListener` to run in response to `'message'` events. It receives the `Event` object as its only parameter.
 
-> This is called when a message has been received from the server. You'll probably want `event.data`~!
+> This is called when a message has been received from the server. You'll probably want `event.data`!
 
 #### options.onreconnect
 Type: `Function`
@@ -153,7 +154,7 @@ If [`options.maxAttempts`](#optionsmaxattempts) has not been exceeded, enqueues 
 
 ### open()
 
-Initializes a new `WebSocket` &mdash; used on itialization and by [`reconnect()`](#reconnect).
+Initializes a new `WebSocket` &mdash; used on initialization and by [`reconnect()`](#reconnect).
 
 
 ## License
