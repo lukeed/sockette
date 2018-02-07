@@ -36,5 +36,22 @@ export default function (url, opts) {
 		ws.send(JSON.stringify(x));
 	};
 
+	$.onmessage = e => {
+
+		let newData = e.data;
+		if (typeof e.data === 'string') {
+			try {
+				newData = JSON.parse(e.data);
+			}
+			catch (e) {
+
+			}
+		}
+
+		const newEvent = Object.assign({}, e, { data: newData });
+
+		return (opts.onmessage || noop)(newEvent);
+	}
+
 	return $.open();
 }
