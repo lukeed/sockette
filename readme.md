@@ -111,6 +111,27 @@ The `EventListener` to run in response to `'message'` events. It receives the `E
 
 > This is called when a message has been received from the server. You'll probably want `event.data`!
 
+If `event.data` is a JSON string, it is parsed into an Object.
+
+E.g. Instead of the following `Event`:
+
+```
+{
+  data: '{"foo": "bar", "baz": [1, 2, 3] }'
+}
+```
+
+You get the parsed Object representation:
+
+```
+{
+  data: {
+    foo: "bar",
+    baz: [1, 2, 3]
+  }
+}
+```
+
 #### options.onreconnect
 Type: `Function`
 
