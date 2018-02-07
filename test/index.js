@@ -1,9 +1,9 @@
 const test = require('tape');
-const fn = require('..');
+const Sockette = require('..');
 const MockServer = require('mock-socket').Server;
 
 test('exports', t => {
-	t.is(typeof fn, 'function', 'exports a function');
+	t.is(typeof Sockette, 'function', 'exports a function');
 	t.end();
 });
 
@@ -14,7 +14,7 @@ test('onmessage', t => {
 
 		const stringFromServer = 'foo bar biz';
 
-		const ws = new fn('ws://localhost:8080', {
+		const ws = new Sockette('ws://localhost:8080', {
 			onmessage: e => {
 				mockServer.stop();
 				st.equal(typeof e.data, 'string', 'Event data is a string');
@@ -32,7 +32,7 @@ test('onmessage', t => {
 		const jsonMessageFromServer = { foo: "bar", baz: [1, 2, 3] };
 
 		mockServer.start();
-		const ws = new fn('ws://localhost:8080', {
+		const ws = new Sockette('ws://localhost:8080', {
 			onmessage: e => {
 				mockServer.stop();
 				st.equal(typeof e.data, 'object', 'Event data is an object');
@@ -49,7 +49,7 @@ test('onmessage', t => {
 		const arrayBufferFromServer = new ArrayBuffer(42);
 
 		mockServer.start();
-		const ws = new fn('ws://localhost:8080', {
+		const ws = new Sockette('ws://localhost:8080', {
 			onmessage: e => {
 				mockServer.stop();
 				st.equal(typeof e.data, 'object', 'Event data is an object');
