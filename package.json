@@ -27,6 +27,7 @@
   ],
   "devDependencies": {
     "microbundle": "^0.4.3",
+    "mock-socket": "^7.1.0",
     "tape": "^4.8.0"
   }
 }
