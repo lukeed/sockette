@@ -20,7 +20,7 @@
 
 <br />
 
-Sockette is a tiny (363 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
+Sockette is a tiny (369 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
 
 Upon creation, the `WebSocket` is returned directly, exposing the native `close` and `send` methods.
 
@@ -46,6 +46,7 @@ const ws = new Sockette('ws://localhost:3000', {
   onopen: e => console.log('Connected!', e),
   onmessage: e => console.log('Received:', e),
   onreconnect: e => console.log('Reconnecting...', e),
+  onmaximum: e => console.log('Stop Attempting!', e),
   onclose: e => console.log('Closed!', e),
   onerror: e => console.log('Error:', e)
 });
@@ -97,6 +98,8 @@ The `EventListener` to run in response to `'open'` events. It receives the `Even
 
 > This is called when the connection has been established and is ready to send and receive data.
 
+> **Important:** Sockette will forget the number of previous reconnection attempts, so that the next time connection is lost, you will consistently retry `n` number of times, as determined by `options.maxAttempts`.
+
 #### options.onmessage
 Type: `Function`
 
@@ -110,6 +113,13 @@ Type: `Function`
 The callback to run when attempting to reconnect to the server.
 
 If Sockette is automatically reconnecting in response to an `error` or unexpected `close` event, then your `onreconnect` callback will receive the forwarded `Event` object.
+
+#### options.onmaximum
+Type: `Function`
+
+The callback to run when the [`maxAttempts`](o#ptionsmaxattempts) limit has been met.
+
+This callback will receive the forwarded `Event` object from `onclose`.
 
 #### options.onclose
 Type: `Function`
@@ -143,7 +153,7 @@ Convenience method that passes your `obj` (Object) through `JSON.stringify` befo
 
 ### reconnect()
 
-If [`options.maxAttempts`](#optionsmaxattempts) has not been exceeded, enqueues a reconnection attempt.
+If [`options.maxAttempts`](#optionsmaxattempts) has not been exceeded, enqueues a reconnection attempt. Otherwise, it runs your [`options.onmaximum`](#optionsonmaximum) callback.
 
 ### open()
 
