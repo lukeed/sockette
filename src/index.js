@@ -30,7 +30,7 @@ export default function (url, opts) {
 		(++num < max) && setTimeout(_ => {
 			(opts.onreconnect || noop)(e);
 			self.open();
-		}, ms);
+		}, ms) : (opts.onmaximum || noop)(e);
 	};
 
 	self.json = x => {
