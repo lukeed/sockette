@@ -27,7 +27,7 @@ export default function (url, opts) {
 	};
 
 	self.reconnect = e => {
-		(++num < max) && setTimeout(_ => {
+		(num++ < max) ? setTimeout(_ => {
 			(opts.onreconnect || noop)(e);
 			self.open();
 		}, ms) : (opts.onmaximum || noop)(e);
