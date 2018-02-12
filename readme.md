@@ -57,21 +57,14 @@ ws.close(); // graceful shutdown
 setTimeout(ws.reconnect, 10e3);
 ```
 
-> **Note:** You don't have to use `new` to instantiate!
-
-```js
-const socket = require('sockette');
-let ws = socket('ws://localhost:3000');
-```
-
 
 ## API
 
 ### Sockette(url, options)
 
-Returns: `WebSocket`
+Returns: `Sockette`
 
-Returns the underlying [`WebSocket`][MDN] directly.
+Returns the `Sockette` instance.
 
 #### url
 Type: `String`
