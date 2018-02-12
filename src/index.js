@@ -3,12 +3,10 @@ function noop() {}
 export default function (url, opts) {
 	opts = opts || {};
 
-	let k, ws, $={};
-	let ms=opts.timeout || 1e3, num=0, max=opts.maxAttempts || Infinity;
+	let k, ws, num, $={};
+	let ms=opts.timeout || 1e3, max=opts.maxAttempts || Infinity;
 
-	for (k in opts) {
-		(typeof opts[k] === 'function') && ($[k]=opts[k]);
-	}
+	$.onmessage = opts.onmessage || noop;
 
 	$.onclose = e => {
 		(e.code !== 1e3 && e.code !== 1005) && $.reconnect(e);
@@ -19,6 +17,10 @@ export default function (url, opts) {
 		(e && e.code==='ECONNREFUSED') ? $.reconnect(e) : (opts.onerror || noop)(e);
 	};
 
+	$.onopen = e => {
+		num=0; (opts.onopen || noop)(e);
+	};
+
 	$.open = () => {
 		ws = new WebSocket(url, opts.protocols);
 		for (k in $) ws[k] = $[k];
@@ -27,7 +29,7 @@ export default function (url, opts) {
 
 	$.reconnect = e => {
 		(++num < max) && setTimeout(_ => {
-			($.onreconnect || noop)(e);
+			(opts.onreconnect || noop)(e);
 			$.open();
 		}, ms);
 	};
