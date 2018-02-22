@@ -5,6 +5,7 @@ export default function (url, opts) {
 
 	let k, ws, num, $={}, self=this;
 	let ms=opts.timeout || 1e3, max=opts.maxAttempts || Infinity;
+	let WebSocketConstructor = opts.WebSocket || WebSocket
 
 	$.onmessage = opts.onmessage || noop;
 
@@ -22,7 +23,7 @@ export default function (url, opts) {
 	};
 
 	self.open = () => {
-		ws = new WebSocket(url, opts.protocols);
+		ws = new WebSocketConstructor(url, opts.protocols);
 		for (k in $) ws[k] = $[k];
 	};
 
