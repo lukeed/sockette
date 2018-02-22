@@ -59,6 +59,21 @@ setTimeout(ws.reconnect, 10e3);
 ```
 
 
+## Node.js usage
+
+Using the [`ws`](https://github.com/websockets/ws) module as underlying client.
+
+```js
+const WebSocket = require('ws');
+const Sockette = require('sockette');
+
+const ws = new Sockette('ws://localhost:3000', {
+  // Regular options
+  WebSocket
+});
+```
+
+
 ## API
 
 ### Sockette(url, options)
@@ -138,6 +153,13 @@ The `EventListener` to run in response to `'error'` events. It receives the `Eve
 > This is called anytime an error occurs.
 
 > **Important:** If the `event.code` is `ECONNREFUSED`, an automatic reconnect attempt will be queued.
+
+#### options.WebSocket
+Type: `Function`
+
+The `WebSocket` constructor to use. Defaults to global `WebSocket` otherwise.
+
+> This is mostly for Node.js where there's no global `WebSocket` object.
 
 ### send(data)
 
