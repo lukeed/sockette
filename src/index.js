@@ -21,6 +21,19 @@ export default function (url, opts) {
 		num=0; (opts.onopen || noop)(e);
 	};
 
+	self.getStatus = () => {
+		/*
+		 * `readyState` attribute describes the state
+		 *  of the WebSocket connection.
+		 *
+		 *  0 - CONNECTING
+		 *  1 - OPEN
+		 *  2 - CLOSING
+		 *  3 - CLOSED
+		*/
+		return ws.readyState;
+	};
+
 	self.open = () => {
 		ws = new WebSocket(url, opts.protocols);
 		for (k in $) ws[k] = $[k];
