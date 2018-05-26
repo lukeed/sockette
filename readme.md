@@ -52,6 +52,7 @@ const ws = new Sockette('ws://localhost:3000', {
 });
 
 ws.send('Hello, world!');
+ws.json({type: 'ping'});
 ws.close(); // graceful shutdown
 
 // Reconnect 10s later
