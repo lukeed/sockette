@@ -160,10 +160,6 @@ If [`options.maxAttempts`](#optionsmaxattempts) has not been exceeded, enqueues 
 
 Initializes a new `WebSocket` &mdash; used on initialization and by [`reconnect()`](#reconnect).
 
-## TypeScript
-
-Typings are included in this repository.
-
 ## License
 
 MIT © [Luke Edwards](https://lukeed.com)
