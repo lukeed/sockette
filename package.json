@@ -1,6 +1,7 @@
 {
   "name": "sockette",
   "version": "2.0.0",
+  "typeScriptVersion": "2.8",
   "repository": "lukeed/sockette",
   "description": "🧦 The cutest little WebSocket wrapper!",
   "umd:main": "dist/sockette.min.js",
