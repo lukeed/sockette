@@ -18,7 +18,8 @@
     "test": "tape test/*.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "d"
   ],
   "types": "./d/index.d.ts",
   "keywords": [
