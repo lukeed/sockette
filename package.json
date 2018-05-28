@@ -19,9 +19,9 @@
   },
   "files": [
     "dist",
-    "d"
+    "sockette.d.ts"
   ],
-  "types": "./d/index.d.ts",
+  "types": "sockette.d.ts",
   "keywords": [
     "socket",
     "reconnect",
