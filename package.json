@@ -18,8 +18,10 @@
     "test": "tape test/*.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "sockette.d.ts"
   ],
+  "types": "sockette.d.ts",
   "keywords": [
     "socket",
     "reconnect",
