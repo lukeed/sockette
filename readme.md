@@ -22,9 +22,9 @@
 
 Sockette is a tiny (369 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
 
-Upon creation, the `WebSocket` is returned directly, exposing the native `close` and `send` methods.
-
 In addition to attaching [additional API methods](#api), Sockette allows you to **reuse** instances, avoiding the need to redeclare all event listeners.
+
+You have direct access to the (current) underlying `WebSocket` within every `EventListener` callback (via `event.target`).
 
 
 ## Install
