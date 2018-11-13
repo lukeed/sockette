@@ -4,7 +4,7 @@
   "repository": "lukeed/sockette",
   "description": "🧦 The cutest little WebSocket wrapper!",
   "umd:main": "dist/sockette.min.js",
-  "module": "dist/sockette.es.js",
+  "module": "dist/sockette.mjs",
   "main": "dist/sockette.js",
   "license": "MIT",
   "author": {
