@@ -6,13 +6,13 @@
 
 <div align="center">
   <a href="https://npmjs.org/package/sockette">
-    <img src="https://img.shields.io/npm/v/sockette.svg" alt="version" />
+    <img src="https://badgen.now.sh/npm/v/sockette" alt="version" />
   </a>
   <a href="https://travis-ci.org/lukeed/sockette">
-    <img src="https://img.shields.io/travis/lukeed/sockette.svg" alt="travis" />
+    <img src="https://badgen.now.sh/travis/lukeed/sockette" alt="travis" />
   </a>
   <a href="https://npmjs.org/package/sockette">
-    <img src="https://img.shields.io/npm/dm/sockette.svg" alt="downloads" />
+    <img src="https://badgen.now.sh/npm/dm/sockette" alt="downloads" />
   </a>
 </div>
 
