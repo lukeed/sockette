@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "repository": "lukeed/sockette",
   "description": "🧦 The cutest little WebSocket wrapper!",
-  "umd:main": "dist/sockette.min.js",
+  "unpkg": "dist/sockette.min.js",
   "module": "dist/sockette.mjs",
   "main": "dist/sockette.js",
   "license": "MIT",
