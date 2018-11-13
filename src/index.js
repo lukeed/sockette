@@ -22,7 +22,7 @@ export default function (url, opts) {
 	};
 
 	self.open = function () {
-		ws = new WebSocket(url, opts.protocols);
+		ws = new WebSocket(url, opts.protocols || []);
 		for (k in $) ws[k] = $[k];
 	};
 
