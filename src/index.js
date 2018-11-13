@@ -4,7 +4,7 @@ export default function (url, opts) {
 	opts = opts || {};
 
 	var ws, num=0, $={};
-	var ms=opts.timeout || 1e3, max=opts.maxAttempts || Infinity;
+	var max = opts.maxAttempts || Infinity;
 
 	$.open = function () {
 		ws = new WebSocket(url, opts.protocols || []);
@@ -30,7 +30,7 @@ export default function (url, opts) {
 		(num++ < max) ? setTimeout(_ => {
 			(opts.onreconnect || noop)(e);
 			$.open();
-		}, ms) : (opts.onmaximum || noop)(e);
+		}, opts.timeout || 1e3) : (opts.onmaximum || noop)(e);
 	};
 
 	$.json = function (x) {
