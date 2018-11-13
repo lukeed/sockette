@@ -6,13 +6,13 @@
 
 <div align="center">
   <a href="https://npmjs.org/package/sockette">
-    <img src="https://img.shields.io/npm/v/sockette.svg" alt="version" />
+    <img src="https://badgen.now.sh/npm/v/sockette" alt="version" />
   </a>
   <a href="https://travis-ci.org/lukeed/sockette">
-    <img src="https://img.shields.io/travis/lukeed/sockette.svg" alt="travis" />
+    <img src="https://badgen.now.sh/travis/lukeed/sockette" alt="travis" />
   </a>
   <a href="https://npmjs.org/package/sockette">
-    <img src="https://img.shields.io/npm/dm/sockette.svg" alt="downloads" />
+    <img src="https://badgen.now.sh/npm/dm/sockette" alt="downloads" />
   </a>
 </div>
 
@@ -20,11 +20,11 @@
 
 <br />
 
-Sockette is a tiny (369 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
-
-Upon creation, the `WebSocket` is returned directly, exposing the native `close` and `send` methods.
+Sockette is a tiny (363 bytes) wrapper around `WebSocket` that will automatically reconnect if the connection is lost!
 
 In addition to attaching [additional API methods](#api), Sockette allows you to **reuse** instances, avoiding the need to redeclare all event listeners.
+
+You have direct access to the (current) underlying `WebSocket` within every `EventListener` callback (via `event.target`).
 
 
 ## Install
@@ -52,6 +52,7 @@ const ws = new Sockette('ws://localhost:3000', {
 });
 
 ws.send('Hello, world!');
+ws.json({type: 'ping'});
 ws.close(); // graceful shutdown
 
 // Reconnect 10s later

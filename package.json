@@ -1,10 +1,10 @@
 {
   "name": "sockette",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "repository": "lukeed/sockette",
   "description": "🧦 The cutest little WebSocket wrapper!",
-  "umd:main": "dist/sockette.min.js",
-  "module": "dist/sockette.es.js",
+  "unpkg": "dist/sockette.min.js",
+  "module": "dist/sockette.mjs",
   "main": "dist/sockette.js",
   "license": "MIT",
   "author": {
@@ -13,20 +13,25 @@
     "url": "lukeed.com"
   },
   "scripts": {
-    "build": "microbundle src",
+    "build": "node builder",
     "pretest": "npm run build",
     "test": "tape test/*.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "sockette.d.ts"
   ],
+  "types": "sockette.d.ts",
   "keywords": [
     "socket",
     "reconnect",
     "websocket"
   ],
   "devDependencies": {
-    "microbundle": "^0.4.3",
-    "tape": "^4.8.0"
+    "gzip-size": "^5.0.0",
+    "mk-dirs": "^1.0.0",
+    "pretty-bytes": "^5.1.0",
+    "tape": "^4.8.0",
+    "terser": "^3.10.11"
   }
 }
