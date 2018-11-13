@@ -3,7 +3,7 @@ function noop() {}
 export default function (url, opts) {
 	opts = opts || {};
 
-	var k, ws, num, $={}, self=this;
+	var k, ws, num=0, $={}, self=this;
 	var ms=opts.timeout || 1e3, max=opts.maxAttempts || Infinity;
 
 	$.onmessage = opts.onmessage || noop;
@@ -18,7 +18,8 @@ export default function (url, opts) {
 	};
 
 	$.onopen = function (e) {
-		num=0; (opts.onopen || noop)(e);
+		num = 0;
+		(opts.onopen || noop)(e);
 	};
 
 	self.open = function () {
