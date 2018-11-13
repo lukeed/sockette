@@ -13,7 +13,7 @@
     "url": "lukeed.com"
   },
   "scripts": {
-    "build": "microbundle src",
+    "build": "node builder",
     "pretest": "npm run build",
     "test": "tape test/*.js"
   },
@@ -28,7 +28,10 @@
     "websocket"
   ],
   "devDependencies": {
-    "microbundle": "^0.4.3",
-    "tape": "^4.8.0"
+    "gzip-size": "^5.0.0",
+    "mk-dirs": "^1.0.0",
+    "pretty-bytes": "^5.1.0",
+    "tape": "^4.8.0",
+    "terser": "^3.10.11"
   }
 }
