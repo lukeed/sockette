@@ -9,7 +9,7 @@ export default function (url, opts) {
 	$.onmessage = opts.onmessage || noop;
 
 	$.onclose = function (e) {
-		(e.code !== 1e3 && e.code !== 1005) && self.reconnect(e);
+		e.code === 1e3 || e.code === 1005 || self.reconnect(e);
 		(opts.onclose || noop)(e);
 	};
 
