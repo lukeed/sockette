@@ -6,6 +6,7 @@ declare module "sockette" {
         close(code?: number, reason?: string): void;
         reconnect(): void;
         open(): void;
+				ws: WebSocket
     }
 
     export interface SocketteOptions {
