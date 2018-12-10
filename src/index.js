@@ -27,7 +27,7 @@ export default function (url, opts) {
 	};
 
 	$.reconnect = function (e) {
-		(num++ < max) ? setTimeout(_ => {
+		(num++ < max) ? setTimeout(function () {
 			(opts.onreconnect || noop)(e);
 			$.open();
 		}, opts.timeout || 1e3) : (opts.onmaximum || noop)(e);
