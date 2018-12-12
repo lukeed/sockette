@@ -42,7 +42,7 @@ export default function (url, opts) {
 	};
 
 	$.close = function (x, y) {
-		ws.close(x || 1005, y);
+		ws.close(x || 1e3, y);
 	};
 
 	$.open(); // init
