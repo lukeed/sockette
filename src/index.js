@@ -3,12 +3,13 @@ function noop() {}
 export default function (url, opts) {
 	opts = opts || {};
 
-	var ws, num=0, $={};
+	var ws, num=0, $={}, closing=false, reconnectTimeout=null;
 	var max = opts.maxAttempts || Infinity;
 
 	$.open = function () {
 		ws = new WebSocket(url, opts.protocols || []);
 
+		closing = false;
 		ws.onmessage = opts.onmessage || noop;
 
 		ws.onopen = function (e) {
@@ -27,10 +28,11 @@ export default function (url, opts) {
 	};
 
 	$.reconnect = function (e) {
-		(num++ < max) ? setTimeout(function () {
+		if(closing) return;
+		(num++ < max) ? (reconnectTimeout = setTimeout(function () {
 			(opts.onreconnect || noop)(e);
 			$.open();
-		}, opts.timeout || 1e3) : (opts.onmaximum || noop)(e);
+		}, opts.timeout || 1e3)) : (opts.onmaximum || noop)(e);
 	};
 
 	$.json = function (x) {
@@ -42,6 +44,8 @@ export default function (url, opts) {
 	};
 
 	$.close = function (x, y) {
+		closing = true;
+		if(reconnectTimeout) clearTimeout(reconnectTimeout);
 		ws.close(x || 1e3, y);
 	};
 
