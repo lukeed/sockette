@@ -3,7 +3,7 @@ function noop() {}
 export default function (url, opts) {
 	opts = opts || {};
 
-	var ws, num=0, $={}, closing=false, reconnectTimeout=null;
+	var ws, num=0, timer=1, $={};
 	var max = opts.maxAttempts || Infinity;
 
 	$.open = function () {
@@ -28,11 +28,14 @@ export default function (url, opts) {
 	};
 
 	$.reconnect = function (e) {
-		if(closing) return;
-		(num++ < max) ? (reconnectTimeout = setTimeout(function () {
-			(opts.onreconnect || noop)(e);
-			$.open();
-		}, opts.timeout || 1e3)) : (opts.onmaximum || noop)(e);
+		if (timer && num++ < max) {
+			timer = setTimeout(function () {
+				(opts.onreconnect || noop)(e);
+				$.open();
+			}, opts.timeout || 1e3);
+		} else {
+			(opts.onmaximum || noop)(e);
+		}
 	};
 
 	$.json = function (x) {
@@ -44,8 +47,7 @@ export default function (url, opts) {
 	};
 
 	$.close = function (x, y) {
-		closing = true;
-		if(reconnectTimeout) clearTimeout(reconnectTimeout);
+		timer = clearTimeout(timer);
 		ws.close(x || 1e3, y);
 	};
 
