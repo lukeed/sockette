@@ -9,7 +9,6 @@ export default function (url, opts) {
 	$.open = function () {
 		ws = new WebSocket(url, opts.protocols || []);
 
-		closing = false;
 		ws.onmessage = opts.onmessage || noop;
 
 		ws.onopen = function (e) {
