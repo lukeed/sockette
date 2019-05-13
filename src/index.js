@@ -17,7 +17,7 @@ export default function (url, opts) {
 		};
 
 		ws.onclose = function (e) {
-			e.code === 1e3 || e.code === 1005 || $.reconnect(e);
+			e.code === 1e3 || e.code === 1001 || e.code === 1005 || $.reconnect(e);
 			(opts.onclose || noop)(e);
 		};
 
