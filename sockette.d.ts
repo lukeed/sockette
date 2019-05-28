@@ -12,6 +12,7 @@ declare module "sockette" {
 		protocols?: string | string[];
 		timeout?: number;
 		maxAttempts?: number;
+		binaryType?: BinaryType;
 		onopen?: (this: Sockette, ev: Event) => any;
 		onmessage?: (this: Sockette, ev: MessageEvent) => any;
 		onreconnect?: (this: Sockette, ev: Event | CloseEvent) => any;
