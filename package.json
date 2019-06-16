@@ -1,6 +1,6 @@
 {
   "name": "sockette",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "repository": "lukeed/sockette",
   "description": "🧦 The cutest little WebSocket wrapper!",
   "module": "dist/sockette.mjs",
