@@ -129,7 +129,7 @@ The `EventListener` to run in response to `'close'` events. It receives the `Eve
 
 > This is called when the connection has been closed for any reason.
 
-> **Important:** If the `event.code` is _not_ `1000` or `1005` an automatic reconnect attempt will be queued.
+> **Important:** If the `event.code` is _not_ `1000`, `1001`, or `1005` an automatic reconnect attempt will be queued.
 
 #### options.onerror
 Type: `Function`
@@ -148,7 +148,7 @@ Identical to [`WebSocket#send()`][send], capable of sending multiple data types.
 
 Identical to [`WebSocket#close()`][close].
 
-> **Note:** The `code` will default to `1005` unless specified.
+> **Note:** The `code` will default to `1000` unless specified.
 
 ### json(obj)
 
