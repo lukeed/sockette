@@ -148,7 +148,7 @@ Identical to [`WebSocket#send()`][send], capable of sending multiple data types.
 
 Identical to [`WebSocket#close()`][close].
 
-> **Note:** The `code` will default to `1005` unless specified.
+> **Note:** The `code` will default to `1000` unless specified.
 
 ### json(obj)
 
