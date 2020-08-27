@@ -142,17 +142,17 @@ The `EventListener` to run in response to `'error'` events. It receives the `Eve
 
 ### send(data)
 
-Identical to [`WebSocket#send()`][send], capable of sending multiple data types.
+Identical to [`WebSocket.send()`][send], capable of sending multiple data types.
 
 ### close(code, reason)
 
-Identical to [`WebSocket#close()`][close].
+Identical to [`WebSocket.close()`][close].
 
 > **Note:** The `code` will default to `1000` unless specified.
 
 ### json(obj)
 
-Convenience method that passes your `obj` (Object) through `JSON.stringify` before passing it to [`WebSocket#send()`][send].
+Convenience method that passes your `obj` (Object) through `JSON.stringify` before passing it to [`WebSocket.send()`][send].
 
 ### reconnect()
 
@@ -168,5 +168,5 @@ Initializes a new `WebSocket` &mdash; used on initialization and by [`reconnect(
 MIT © [Luke Edwards](https://lukeed.com)
 
 [MDN]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
-[close]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#close()
-[send]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket#send()
+[close]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close
+[send]: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/send
