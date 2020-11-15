@@ -1,0 +1,32 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Node.js v${{ matrix.nodejs }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nodejs: [10, 12, 14]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.nodejs }}
+
+    - name: Install
+      run: |
+        npm install
+        npm install -g c8
+
+    - name: Test w/ Coverage
+      run: c8 npm test
+
+    - name: Report
+      if: matrix.nodejs >= 14
+      run: |
+        c8 report --reporter=text-lcov > coverage.lcov
+        bash <(curl -s https://codecov.io/bash)
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
