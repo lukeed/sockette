@@ -9,6 +9,8 @@ export default function (url, opts) {
 	$.open = function () {
 		ws = new WebSocket(url, opts.protocols || []);
 
+		ws.binaryType = opts.binaryType || 'blob';
+
 		ws.onmessage = opts.onmessage || noop;
 
 		ws.onopen = function (e) {
