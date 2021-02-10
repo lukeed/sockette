@@ -1,6 +1,6 @@
 declare module "sockette" {
 	export default class Sockette {
-		constructor(url: string, options?: SocketteOptions);
+		constructor(url: string | Promise<string> | ((attempt: number) => Promise<string>) | ((attempt: number) => string), options?: SocketteOptions);
 		send(data: any): void;
 		json(data: any): void;
 		close(code?: number, reason?: string): void;
