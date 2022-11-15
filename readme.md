@@ -40,16 +40,21 @@ Unlike `WebSocket`, you should declare all event listeners on initialization:
 ```js
 const Sockette = require('sockette');
 
-const ws = new Sockette('ws://localhost:3000', {
-  timeout: 5e3,
-  maxAttempts: 10,
-  onopen: e => console.log('Connected!', e),
-  onmessage: e => console.log('Received:', e),
-  onreconnect: e => console.log('Reconnecting...', e),
-  onmaximum: e => console.log('Stop Attempting!', e),
-  onclose: e => console.log('Closed!', e),
-  onerror: e => console.log('Error:', e)
-});
+const ws = await new Promise(resolve => {
+  const ws = new Sockette('ws://localhost:3000', {
+    timeout: 5e3,
+    maxAttempts: 10,
+    onopen: e => {
+      console.log('Connected!', e)
+      resolve(ws)
+    },
+    onmessage: e => console.log('Received:', e),
+    onreconnect: e => console.log('Reconnecting...', e),
+    onmaximum: e => console.log('Stop Attempting!', e),
+    onclose: e => console.log('Closed!', e),
+    onerror: e => console.log('Error:', e)
+  })
+})
 
 ws.send('Hello, world!');
 ws.json({type: 'ping'});
