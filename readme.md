@@ -8,8 +8,11 @@
   <a href="https://npmjs.org/package/sockette">
     <img src="https://badgen.now.sh/npm/v/sockette" alt="version" />
   </a>
-  <a href="https://github.com/lukeed/sockette/actions?query=workflow:CI+branch:master">
-    <img src="https://github.com/lukeed/sockette/workflows/CI/badge.svg?event=push&query=workflow:CI+branch:master" alt="CI" />
+  <a href="https://github.com/lukeed/sockette/actions">
+    <img src="https://github.com/lukeed/sockette/workflows/CI/badge.svg" alt="CI" />
+  </a>
+  <a href="https://licenses.dev/npm/sockette">
+    <img src="https://licenses.dev/b/npm/sockette" alt="licenses" />
   </a>
   <a href="https://npmjs.org/package/sockette">
     <img src="https://badgen.now.sh/npm/dm/sockette" alt="downloads" />
