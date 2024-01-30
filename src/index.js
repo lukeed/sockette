@@ -3,7 +3,7 @@ function noop() {}
 export default function (url, opts) {
 	opts = opts || {};
 
-	var ws, num=0, timer=1, $={};
+	var ws, num=0, timer=-1, $={};
 	var max = opts.maxAttempts || Infinity;
 
 	$.open = function () {
