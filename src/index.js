@@ -1,4 +1,7 @@
 function noop() {}
+function isFunction(variable) {
+  return !!(variable && variable.constructor && variable.call && variable.apply)
+}
 
 export default function (url, opts) {
 	opts = opts || {};
@@ -6,24 +9,29 @@ export default function (url, opts) {
 	var ws, num=0, timer=1, $={};
 	var max = opts.maxAttempts || Infinity;
 
+
 	$.open = function () {
-		ws = new WebSocket(url, opts.protocols || []);
+		var resolveUrl = isFunction(url) ? url(num) : url
 
-		ws.onmessage = opts.onmessage || noop;
+		Promise.resolve(resolveUrl).then(function (resolvedURL) {
+			ws = new WebSocket(resolvedURL, opts.protocols || []);
 
-		ws.onopen = function (e) {
-			(opts.onopen || noop)(e);
-			num = 0;
-		};
+			ws.onmessage = opts.onmessage || noop;
 
-		ws.onclose = function (e) {
-			e.code === 1e3 || e.code === 1001 || e.code === 1005 || $.reconnect(e);
-			(opts.onclose || noop)(e);
-		};
+			ws.onopen = function (e) {
+				(opts.onopen || noop)(e);
+				num = 0;
+			};
 
-		ws.onerror = function (e) {
-			(e && e.code==='ECONNREFUSED') ? $.reconnect(e) : (opts.onerror || noop)(e);
-		};
+			ws.onclose = function (e) {
+				e.code === 1e3 || e.code === 1001 || e.code === 1005 || $.reconnect(e);
+				(opts.onclose || noop)(e);
+			};
+
+			ws.onerror = function (e) {
+				(e && e.code==='ECONNREFUSED') ? $.reconnect(e) : (opts.onerror || noop)(e);
+			};
+		})
 	};
 
 	$.reconnect = function (e) {
